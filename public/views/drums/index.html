@@ -1,0 +1,14 @@
+<button ng-click='play()'>play</button>
+<button ng-click='stop()'>stop</button>
+<input ng-model='bpm' type='number'/>
+<table>
+  <tr ng-repeat='instrument in instruments'>
+    <td>{{instrument.name}}</td>
+    <td ng-repeat='tick in instrument.ticks track by $index'>
+      <span ng-click='toggleTick(instrument, $index)' class='tick'>
+        <i ng-show='!tick' class='fa fa-circle-o'></i>
+        <i ng-show='tick' class='fa fa-dot-circle-o'></i>
+      </span>
+    </td>
+  </tr>
+</table>
