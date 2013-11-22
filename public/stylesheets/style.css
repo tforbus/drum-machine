@@ -9,8 +9,14 @@ a {
   font-size: 22px;
   cursor: pointer;
 }
-.active-tick {
+.active-tick.high {
   color: #ee3333;
+}
+.active-tick.med {
+  color: #ee8e33;
+}
+.active-tick.low {
+  color: #eed833;
 }
 .tick-0,
 .tick-1,

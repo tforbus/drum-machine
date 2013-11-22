@@ -12,8 +12,19 @@ a {
   cursor: pointer;
 }
 
+
 .active-tick {
-  color: #ee3333;
+  &.high {
+    color: #ee3333;
+  }
+
+  &.med {
+    color: #ee8e33;
+  }
+
+  &.low {
+    color: #eed833;
+  }
 }
 
 .tick-0, .tick-1, .tick-2, .tick-3,

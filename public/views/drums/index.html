@@ -1,12 +1,13 @@
 <button ng-click='play()'>play</button>
 <button ng-click='stop()'>stop</button>
 <input ng-model='bpm' type='number'/>
+<input ng-model='measuresToPlay' type='number'/>
 <input ng-model='loop' type='checkbox'/> loop?
 <input name='velocities'
   type='radio' ng-click='changeDefaultVelocity("high")' value='high'/>
 high 
 <input name='velocities'
-  type='radio' ng-click='changeDefaultVelocity("mid")' value='mid'/>
+  type='radio' ng-click='changeDefaultVelocity("med")' value='med' checked />
 med 
 <input name='velocities'
   type='radio' ng-click='changeDefaultVelocity("low")' value='low'/>
@@ -18,8 +19,9 @@ low
       <span
         ng-click='toggleTick(instrument, $index)'
         class='tick tick-{{$index}}'>
-        <i ng-show='!tick.value' class='fa fa-square'></i>
-        <i ng-show='tick.value' class='fa fa-square active-tick'></i>
+        <i ng-show='tick.isActive == false' class='fa fa-square'></i>
+        <i ng-show='tick.isActive == true' 
+          class='fa fa-square active-tick {{tick.velocity.name}}'></i>
       </span>
     </td>
   </tr>
