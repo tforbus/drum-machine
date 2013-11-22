@@ -9,6 +9,13 @@ a {
   font-size: 22px;
   cursor: pointer;
 }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table > td {
+  padding: 5px;
+}
 .active-tick.high {
   color: #ee3333;
 }
@@ -17,6 +24,12 @@ a {
 }
 .active-tick.low {
   color: #eed833;
+}
+.end-of-tick {
+  border-right: 3px solid transparent;
+}
+.end-of-play {
+  border-right: 3px solid #000;
 }
 .tick-0,
 .tick-1,
