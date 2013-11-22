@@ -68,32 +68,36 @@ var IndexCtrl = angular.module('drums.controllers').controller('IndexCtrl',
 
   $scope.play = function() {
     var pauseTime = $scope.getSecondsBetweenEachTick() * 1000,
-        maxTimes = 16,
-        index = -1;
+        maxTimes = $scope.getTotalTicks(),
+        index = -1,
+        isStartingOver = false;
 
     function loop(){
       index += 1;
+      if (isStartingOver) {
+        isStartingOver = false;
+      }
+
       for (var i = 0, len = $scope.instruments.length; i < len; i += 1) {
         var instrument = $scope.instruments[i];
         if (instrument.ticks[index]) {
           instrument.sound.play();
         }
       }
-      if (index < maxTimes) {
-        setTimeout(loop, pauseTime);
-      }
+
+      if (index < maxTimes || $scope.loop) {
+        // The drums get of rhythm once the last tick is played and the 
+        // loop begins again, so set the flag so there is no start time.
+        if (index >= maxTimes) {
+          index = -1;
+          isStartingOver = true;
+        }
+
+        setTimeout(loop, isStartingOver ? 0 : pauseTime);
+      } 
     }
+
     loop();
-   // var totalTicks = $scope.getTotalTicks(),
-   //     totalInstruments = $scope.instruments.length;
-   // for (var instrument = 0; instrument < totalInstruments; instrument += 1) {
-   //   var currentInstrument = $scope.instruments[instrument];
-   //   for (var tick = 0; tick < totalTicks; tick += 1) {
-   //     if (currentInstrument.ticks[tick]) {
-   //       currentInstrument.sound.play();
-   //     }
-   //   }
-   // }
   };
 
   /**
