@@ -1,9 +1,11 @@
 angular.module('drums.controllers', []);
 angular.module('drums.directives', []);
+angular.module('drums.factories', []);
 
 var app = angular.module('drums', [
   'ngRoute',
   'drums.directives',
+  'drums.factories',
   'drums.controllers'
 ]);
 
