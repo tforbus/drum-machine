@@ -8,6 +8,7 @@ body {
 #container {
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 #controls {
   display: block;
@@ -43,13 +44,14 @@ div.control.active {
   color: #eed833;
 }
 .tick {
-  font-size: 32px;
-  margin-right: 3px;
+  font-size: 46px;
+  margin-right: 5px;
   cursor: pointer;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  margin: 0 auto;
 }
 table .instrument-name {
   text-align: center;

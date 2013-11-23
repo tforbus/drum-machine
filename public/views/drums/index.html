@@ -7,7 +7,7 @@
 </div>
 
 <div class='control'>
-  <strong>Loop?&nbsp;</strong>
+  <strong><i class='fa fa-refresh'></i>&nbsp;</strong>
   <i ng-show='!loop' ng-click='toggleLoop()' class='fa fa-square-o'></i>
   <i ng-show='loop' ng-click='toggleLoop()' class='fa fa-check-square'></i>
 </div>
@@ -35,27 +35,33 @@
 </div>
 
 <div class='control'>
-  <strong>Current Measure:&nbsp;</strong>
+  <strong>Measure:&nbsp;</strong>
+   <i ng-click='decrementCurrentMeasure()' class='fa fa-chevron-left'></i>
+  <span ng-model='bpm'>{{currentMeasure}}</span>
+  <i ng-click='incrementCurrentMeasure()' class='fa fa-chevron-right'></i>
+</div>
+
+<div class='control'>
+  <i ng-click='eraseAll()' class='fa fa-eraser'></i>
 </div>
 <table> 
   <tr ng-repeat='instrument in instruments'>
     <td class='instrument-name'>
       {{instrument.name}}
     </td>
-
+<!--
+ng-class='{"end-of-play": ticksToPlay - 1 === $index}'
+-->
     <td
       class='end-of-tick'
-      current-tick
-      ng-model='currentTick'
-      td-index='{{$index}}'
-      ng-class='{"end-of-play": ticksToPlay - 1 === $index}'
-      ng-repeat='tick in instrument.ticks track by $index'>
+      ng-repeat='tick in instrument.ticks track by $index'
+      ng-show='isTickInMeasure($index, currentMeasure)'>
       <div
         ng-click='toggleTick(instrument, $index)'
         class='tick tick-{{$index}}'>
-        <i ng-show='tick.isActive == false' class='fa fa-square'></i>
+        <i ng-show='tick.isActive == false' class='fa fa-circle'></i>
         <i ng-show='tick.isActive == true' 
-          class='fa fa-square active-tick {{tick.velocity.name}}'></i>
+          class='fa fa-circle active-tick {{tick.velocity.name}}'></i>
         </div>
     </td>
   </tr>
