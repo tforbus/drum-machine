@@ -102,7 +102,7 @@ var IndexCtrl = angular.module('drums.controllers').controller('IndexCtrl',
   };
 
   $scope.incrementCurrentMeasure = function() {
-    if ($scope.currentMeasure < 4) {
+    if ($scope.currentMeasure < $scope.totalMeasures) {
       $scope.currentMeasure += 1;
     }
   };
