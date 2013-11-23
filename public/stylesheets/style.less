@@ -1,14 +1,60 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-family: 'Open Sans', 'Helvetica', 'sans-serif';
+  font-weight: 300;
+  background: #2a2b3c;
+  color: #fff;
 }
 
-a {
-  color: #00B7FF;
+#container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#controls {
+  display: block;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+div.control {
+  //i { font-size: 1.5em; }
+  i { cursor: pointer; }
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #60638b;
+  display: inline-block;
+  padding: 1.0em 2.0em;
+  position: relative;
+
+  &.active {
+    color: #38b0e2;
+  }
+
+}
+
+.high {
+  color: #ff6666;
+}
+
+.med {
+  color: #ee8e33;
+}
+
+.low {
+  color: #eed833;
 }
 
 .tick {
-  font-size: 22px;
+  font-size: 32px;
+  margin-right: 3px;
   cursor: pointer;
 }
 
@@ -16,28 +62,38 @@ a {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+
+  .instrument-name {
+    text-align: center;
+    font-weight: 700;
+    padding: 0 1.0em;
+  }
+
+  tr {
+    padding: 0.3em;
+
+    td:first-child {
+      padding-left: 0.3em;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.2); //#60638b;
+  }
 }
 
 table > td {
   padding: 5px;
 }
 
+.current-tick {
+  background-color: blue;
+}
+
 .active-tick {
-  &.high {
-    color: #ee3333;
-  }
-
-  &.med {
-    color: #ee8e33;
-  }
-
-  &.low {
-    color: #eed833;
-  }
 }
 
 .end-of-tick {
-  border-right: 3px solid transparent;
+  //border-right: 3px solid transparent;
 }
 .end-of-play {
   border-right: 3px solid #000;
@@ -51,7 +107,7 @@ table > td {
 .tick-40, .tick-41, .tick-42, .tick-43,
 .tick-48, .tick-49, .tick-50, .tick-51,
 .tick-56, .tick-57, .tick-58, .tick-59 {
-  color: #e7e7e7;
+  color: #dfe0e8;
 }
 
 .tick-4, .tick-5, .tick-6, .tick-7,
@@ -62,5 +118,5 @@ table > td {
 .tick-44, .tick-45, .tick-46, .tick-47,
 .tick-52, .tick-53, .tick-54, .tick-55,
 .tick-60, .tick-61, .tick-62, .tick-63 {
-  color: #aaa;
+  color: #afb0c5;
 }

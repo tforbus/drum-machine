@@ -1,23 +1,54 @@
-<button ng-click='play()'>play</button>
-<button ng-click='stop()'>stop</button>
-<input ng-model='bpm' type='number'/>
-<input ng-model='measuresToPlay' type='number'/>
-<input ng-model='loop' type='checkbox'/> loop?
-<input name='velocities'
-  type='radio' ng-click='changeDefaultVelocity("high")' value='high'/>
-high 
-<input name='velocities'
-  type='radio' ng-click='changeDefaultVelocity("med")' value='med' checked />
-med 
-<input name='velocities'
-  type='radio' ng-click='changeDefaultVelocity("low")' value='low'/>
-low 
+<div id='controls'>
+<div ng-show='!isPlaying' class='control' ng-click='play()'>
+  <i class='fa fa-play'></i>
+</div>
+<div ng-show='isPlaying' class='control' ng-click='stop()'>
+  <i class='fa fa-stop'></i>
+</div>
+
+<div class='control'>
+  <strong>Loop?&nbsp;</strong>
+  <i ng-show='!loop' ng-click='toggleLoop()' class='fa fa-square-o'></i>
+  <i ng-show='loop' ng-click='toggleLoop()' class='fa fa-check-square'></i>
+</div>
+
+<div class='control'>
+  <strong>BPM:&nbsp;</strong>
+   <i ng-click='decrementBpm()' class='fa fa-chevron-left'></i>
+  <span ng-model='bpm'>{{bpm}}</span>
+  <i ng-click='incrementBpm()' class='fa fa-chevron-right'></i>
+</div>
+
+
+<div class='control'>
+  <strong>Dynamic:&nbsp;</strong>
+  <i
+    ng-click='changeDefaultVelocity("high")'
+    ng-class='{"fa fa-square-o": currentVelocity.name !== "high", "fa fa-check-square high": currentVelocity.name === "high"}'>&nbsp;High</i>
+  <i
+    ng-click='changeDefaultVelocity("med")'
+    ng-class='{"fa fa-square-o": currentVelocity.name !== "med", "fa fa-check-square med": currentVelocity.name === "med"}'>&nbsp;Medium</i>
+
+  <i
+    ng-click='changeDefaultVelocity("low")'
+    ng-class='{"fa fa-square-o": currentVelocity.name !== "low", "fa fa-check-square low": currentVelocity.name === "low"}'>&nbsp;Low</i>
+</div>
+
+<div class='control'>
+  <strong>Current Measure:&nbsp;</strong>
+</div>
 <table> 
   <tr ng-repeat='instrument in instruments'>
-    <td>{{instrument.name}}</td>
+    <td class='instrument-name'>
+      {{instrument.name}}
+    </td>
+
     <td
       class='end-of-tick'
-      ng-class='{"end-of-play": maxTicksToPlay() - 1 === $index}'
+      current-tick
+      ng-model='currentTick'
+      td-index='{{$index}}'
+      ng-class='{"end-of-play": ticksToPlay - 1 === $index}'
       ng-repeat='tick in instrument.ticks track by $index'>
       <div
         ng-click='toggleTick(instrument, $index)'

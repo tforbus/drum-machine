@@ -1,32 +1,75 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-family: 'Open Sans', 'Helvetica', 'sans-serif';
+  font-weight: 300;
+  background: #2a2b3c;
+  color: #fff;
 }
-a {
-  color: #00B7FF;
+#container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#controls {
+  display: block;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+div.control {
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #60638b;
+  display: inline-block;
+  padding: 1.0em 2.0em;
+  position: relative;
+}
+div.control i {
+  cursor: pointer;
+}
+div.control.active {
+  color: #38b0e2;
+}
+.high {
+  color: #ff6666;
+}
+.med {
+  color: #ee8e33;
+}
+.low {
+  color: #eed833;
 }
 .tick {
-  font-size: 22px;
+  font-size: 32px;
+  margin-right: 3px;
   cursor: pointer;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+table .instrument-name {
+  text-align: center;
+  font-weight: 700;
+  padding: 0 1.0em;
+}
+table tr {
+  padding: 0.3em;
+}
+table tr td:first-child {
+  padding-left: 0.3em;
+}
+table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 table > td {
   padding: 5px;
 }
-.active-tick.high {
-  color: #ee3333;
-}
-.active-tick.med {
-  color: #ee8e33;
-}
-.active-tick.low {
-  color: #eed833;
-}
-.end-of-tick {
-  border-right: 3px solid transparent;
+.current-tick {
+  background-color: blue;
 }
 .end-of-play {
   border-right: 3px solid #000;
@@ -63,7 +106,7 @@ table > td {
 .tick-57,
 .tick-58,
 .tick-59 {
-  color: #e7e7e7;
+  color: #dfe0e8;
 }
 .tick-4,
 .tick-5,
@@ -97,5 +140,5 @@ table > td {
 .tick-61,
 .tick-62,
 .tick-63 {
-  color: #aaa;
+  color: #afb0c5;
 }
