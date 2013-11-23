@@ -93,7 +93,7 @@ angular.module('drums.controllers').controller('IndexCtrl',
 
 
   $scope.eraseAll = function() {
-    $scope.currentVelocity = velocities.med;
+    $scope.currentVelocity = $scope.velocities.med;
     $scope.currentMeasure = 1;
     $scope.createTicks();  
   };
