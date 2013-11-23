@@ -123,6 +123,7 @@ var IndexCtrl = angular.module('drums.controllers').controller('IndexCtrl',
    * On initializing, create that many empty ticks.
    */
   $scope.createTicks = function() {
+    $scope.stop();
     var numberOfTicks = $scope.getTotalTicks();
     for (var i = 0, len = $scope.instruments.length; i < len; i += 1) {
       var instrument = $scope.instruments[i];
@@ -172,6 +173,7 @@ var IndexCtrl = angular.module('drums.controllers').controller('IndexCtrl',
   };
 
   $scope.eraseAll = function() {
+    $scope.currentVelocity = velocities.med;
     $scope.createTicks();  
     $scope.currentMeasure = 1;
   };
